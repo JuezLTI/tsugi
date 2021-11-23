@@ -16,6 +16,8 @@ try {
     $PDOX = false;  // sanity-db-will re-check this below
 }
 
+$OUTPUT->setAppFooter( $text= file_get_contents("../views/footer.html"));
+
 $OUTPUT->header();
 $OUTPUT->bodyStart();
 $OUTPUT->topNav();

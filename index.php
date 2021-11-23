@@ -33,6 +33,9 @@ $OUTPUT->bodyStart();
 require_once("admin/sanity-db.php");
 $OUTPUT->topNav();
 $OUTPUT->flashMessages();
+
+if( isset($CFG->footer_file)) $OUTPUT->setAppFooter( file_get_contents($CFG->footer_file) );
+
 ?>
 <p>
 Hello and welcome to <b><?php echo($CFG->servicename); ?></b>.

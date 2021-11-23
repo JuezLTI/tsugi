@@ -1,0 +1,29 @@
+
+
+body > #body_container{
+    background-image: url('/tsugi/views/logo-dif.png');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: right;
+}
+
+.logo{
+    width: 8%;
+    height: 8%;
+    margin-left: 20px;
+}
+
+.logoEU{
+    width: 20%;
+    height: 20%;
+   
+}
+
+.box{
+    text-align:center;
+}
+
+.transparent_bg{
+    background: transparent !important;
+    
+}

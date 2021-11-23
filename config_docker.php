@@ -20,10 +20,9 @@ register_shutdown_function('__the_end');
 $dirroot = realpath(dirname(__FILE__));
 
 // New for 2021 - We may need to do some tweaking before the autoloader wakes up
-// So we need to add this require to config.php before requiring autoload.php
+// So we need to add this to front of config.php
 require_once $dirroot."/vendor/tsugi/lib/include/pre_config.php";
 
-// Activate the autoloader...
 $loader = require_once($dirroot."/vendor/autoload.php");
 
 // If we just are using Tsugi but not part of another site
@@ -57,6 +56,11 @@ $CFG->loader = $loader;
 if ( $apphome ) $CFG->apphome = $apphome; // Leave unset if not embedded
 unset($apphome);
 
+//This add a footer for the index from a html file
+$CFG->footer_file="views/footer.html";
+// Theme Tsugi to your institutions colors. If not set, default colors will be used.
+$CFG->extra_css = "/tsugi/views/estilo.css";
+
 // If we have a web socket server, put its URL here
 // Do not add a path here - just the host and port
 // Make sure the port is open on your server
@@ -72,10 +76,10 @@ unset($apphome);
 // You need to point this at a database with am account and password
 // that can create tables.   To make the initial tables go into Admin
 // to run the upgrade.php script which auto-creates the tables.
-$CFG->pdo       = 'mysql:host=127.0.0.1;dbname=tsugi';
+$CFG->pdo       = 'mysql:host=tsugi-mysql-db;port=3306;dbname=tsugi';
 // $CFG->pdo       = 'mysql:host=127.0.0.1;port=8889;dbname=tsugi'; // MAMP
-$CFG->dbuser    = 'ltiuser';
-$CFG->dbpass    = 'ltipassword';
+$CFG->dbuser    = 'tsugi_root';
+$CFG->dbpass    = 'tpass';
 
 // Sometimes the PDO constructor call needs additional parameters
 // $CFG->pdo_options = array(\PDO::MYSQL_ATTR_SSL_CA => './BaltimoreCyberTrustRoot.crt.pem'))
@@ -121,16 +125,9 @@ $CFG->dbprefix  = '';
 // features of this application. It can be the plaintext password
 // or a sha256 hash of the admin password.  Please don't use either
 // the 'tsugi' or the sha256 of 'tsugi' example values below.
-$CFG->adminpw = false;
+$CFG->adminpw = 'tsugi';
 // $CFG->adminpw = 'tsugi';
 // $CFG->adminpw = 'sha256:9c0ccb0d53dd71b896cde69c78cf977acbcb36546c96bedec1619406145b5e9e';
-
-//This add a footer for the index from a html file
-$CFG->footer_file="views/footer.html";
-
-// Theme Tsugi to your institutions colors. If not set, default colors will be used.
-$CFG->extra_css = "/tsugi/views/estilo.css";
-
 
 // Theme Tsugi to your institutions colors. If not set, default colors will be used.
 $CFG->theme = array(

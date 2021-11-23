@@ -1,0 +1,38 @@
+FROM php:7.3.21-apache
+
+WORKDIR /git-clones
+
+RUN apt-get update && apt-get install -y git netcat && apt-get clean -y
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN a2enmod rewrite
+
+RUN git clone --branch Dev https://oauth2:v3yysTmyC45L61eMzhP8@source.edf.global/juezlti/tsugi.git
+RUN mkdir -p /var/www/html/
+RUN cp -R tsugi/ /var/www/html/
+
+WORKDIR /var/www/html/tsugi
+RUN cp config_docker.php config.php
+
+RUN git clone --branch Dev https://oauth2:v3yysTmyC45L61eMzhP8@source.edf.global/juezlti/codetest.git
+RUN mkdir -p /var/www/html/tsugi/mod/
+RUN cp -R codetest/ /var/www/html/tsugi/mod/
+
+WORKDIR /var/www/html/tsugi/mod/codetest
+RUN cp config_docker.php config.php
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install
+RUN composer update
+
+RUN mkdir tmp && chmod 777 tmp
+
+
+WORKDIR /var/www/html/tsugi/mod/codetest
+RUN sudo chmod a+rwx codetest
+
+WORKDIR /var/www/html/tsugi
+
+
+EXPOSE 80
+
+# COPY . /var/www/html/tsugi

@@ -151,13 +151,19 @@ class Output {
         }
         
         self::output_theme_css($theme) ?>
-
+            
           <link href="<?= $CFG->staticroot ?>/css/tsugi2.css" rel="stylesheet">
-
+         
+              <?php 
+              if ( isset($CFG->extra_css) ) {
+                 echo '<link href="'.$CFG->extra_css.'" rel="stylesheet">';
+              }
+              ?>
+           
           <style>
               <?php
-              if ( isset($CFG->extra_css) ) {
-                  echo($CFG->extra_css."\n");
+              if ( isset($CFG->extra_style) ) {
+                  echo($CFG->extra_style."\n");
               }
               ?>
           </style>
@@ -405,7 +411,7 @@ EOF;
     }
     
     function helpButton() {
-        $button = '<button id="helpButton" type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#helpModal"><span class="fas fa-question-circle" aria-hidden="true"></span> Help</button>';
+        $button = '<button id="helpButton" type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#helpModal"><span class="fas fa-question-circle" aria-hidden="true"></span>'._m("Help").'</button>';
         if ( $this->buffer ) return $button;
         echo($button);
     }
@@ -947,7 +953,7 @@ $('a').each(function (x) {
             // Drop down link contains an image so add class to style
             $dropdown_link_class .= ' dropdown-img';
         }
-        $retval .= $pad.'  <a href="#" class="'.$dropdown_link_class.'" data-toggle="dropdown">'.$entry->link.' <span class="fa fa-caret-down" aria-hidden="true"></span></a>'."\n";
+        $retval .= $pad.'  <a href="#" class="'.$dropdown_link_class.' transparent_bg" data-toggle="dropdown">'.$entry->link.' <span class="fa fa-caret-down" aria-hidden="true"></span></a>'."\n";
         $retval .= $pad.'  <ul class="dropdown-menu">'."\n";
         foreach($entry->href as $child) {
            $retval .= $this->recurseNav($child, $depth+1);
@@ -963,7 +969,7 @@ $('a').each(function (x) {
         if ( $is_tool_menu ) {
             $retval = '<nav class="navbar navbar-default" role="navigation" id="tsugi_tool_nav_bar">';
         } else {
-           $retval = '<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="tsugi_main_nav_bar" style="display:none">';
+           $retval = '<nav class="navbar navbar-inverse navbar-fixed-top barra" role="navigation" id="tsugi_main_nav_bar" style="display:none">';
         }
 
 $retval .= <<< EOF
@@ -982,7 +988,7 @@ EOF;
             $retval .= '      <a class="navbar-brand" href="'.$set->home->href.'">'.$set->home->link.'</a>'."\n";
         }
         $retval .= "    </div>\n";
-        $retval .= '    <div class="navbar-collapse collapse">'."\n";
+        $retval .= '    <div class="barra navbar-collapse collapse">'."\n";
 
         if ( $set->left && count($set->left->menu) > 0 ) {
             $retval .= '      <ul class="nav navbar-nav navbar-main">'."\n";
@@ -1351,7 +1357,7 @@ EOF;
             }
         }
 
-        // Construct a theme the old way
+        // Construct a theme the old way    
         $theme = array();
         if ( isset($CFG->theme) && is_array($CFG->theme) ) {
             $theme = $CFG->theme;

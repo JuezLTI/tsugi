@@ -135,6 +135,9 @@ msgstr "Capítulos"
 msgid "Done"
 msgstr "Hecho"
 
+msgid "Help"
+msgstr "Ayuda"
+
 #: Menu
 msgid "Settings"
 msgstr "Configuraciones"

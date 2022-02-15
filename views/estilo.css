@@ -27,3 +27,7 @@ body > #body_container{
     background: transparent !important;
     
 }
+
+.navbar.navbar-inverse.navbar-fixed-bottom.barra{
+    position: relative !important;
+}

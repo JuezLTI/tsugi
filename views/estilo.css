@@ -5,6 +5,7 @@ body > #body_container{
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: right;
+    padding-bottom: 120px;
 }
 
 .logo{
@@ -26,8 +27,4 @@ body > #body_container{
 .transparent_bg{
     background: transparent !important;
     
-}
-
-.navbar.navbar-inverse.navbar-fixed-bottom.barra{
-    position: relative !important;
 }

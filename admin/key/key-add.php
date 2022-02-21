@@ -69,7 +69,7 @@ $OUTPUT->topNav();
 $OUTPUT->flashMessages();
 
 ?>
-<h1>Adding Tsugi Tenant/Key
+<h1 class="lti11-add-key-page">Adding Tsugi Tenant/Key
   <a class="btn btn-default" href="keys">Exit</a>
 </h1>
 <ul class="nav nav-tabs">
@@ -161,6 +161,14 @@ require_once("blackboard-detail.php");
 ?>
 </div>
 </div>
+<script>
+    if(document.querySelector('.lti11-add-key-page')){
+        var userIdEement = document.querySelector('#myTabContent form #user_id');
+        if(!userIdEement.value){
+            userIdEement.value = 0
+        }
+    }
+</script>
 <?php
 $OUTPUT->footerStart();
 

@@ -28,3 +28,7 @@ body > #body_container{
     background: transparent !important;
     
 }
+
+.btn-primary {
+    background-color: #05A1E6;
+}

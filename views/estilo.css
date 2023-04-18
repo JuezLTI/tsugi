@@ -1,6 +1,4 @@
-
-
-body > #body_container{
+body>#body_container {
     background-image: url('/tsugi/views/logo-dif.png');
     background-repeat: no-repeat;
     background-size: 30%;
@@ -8,27 +6,53 @@ body > #body_container{
     padding-bottom: 120px;
 }
 
-.logo{
+.logo {
     width: 8%;
     height: 8%;
     margin-left: 20px;
 }
 
-.logoEU{
+.logoEU {
     width: 20%;
     height: 20%;
-   
+
 }
 
-.box{
-    text-align:center;
+.box {
+    text-align: center;
 }
 
-.transparent_bg{
+.transparent_bg {
     background: transparent !important;
-    
+
 }
 
 .btn-primary {
     background-color: #05A1E6;
+}
+
+div.modal-content {
+    background-color: #fff !important;
+}
+
+div.modal-content form div.modal-footer input.btn-primary {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+div.modal-content form div.modal-footer input.btn-primary:hover {
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
+
+form input.btn-normal {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+form input.btn-normal:hover {
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
 }

@@ -106,7 +106,7 @@ if ( !isset($CFG->prefer_lti1_for_grade_send) ) $CFG->prefer_lti1_for_grade_send
 
 error_reporting(E_ALL & ~E_NOTICE);
 error_reporting(E_ALL );
-ini_set('display_errors', 1);
+// ini_set('display_errors', 1);
 
 if ( isset($CFG->sessionlifetime) ) {
     ini_set('session.gc_maxlifetime', $CFG->sessionlifetime);
